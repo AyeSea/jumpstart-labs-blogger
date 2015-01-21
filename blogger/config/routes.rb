@@ -6,6 +6,7 @@ Blogger::Application.routes.draw do
     resources :comments
     #specified comments as a subresource to articles. Unless we do this,
   end
+  resources :tags
   #Tells Rails that we have a resource named 'articles' and the router should expect
   #requests involving this resource to follow the RESTful model of web interaction
   #(Representational State Transfer). Ex. For a request like http://localhost:3000/articles,

@@ -1,4 +1,12 @@
 <h1><%= @article.title %></h1>
+
+<p>
+	Tags:
+	<% @article.tags.each do |tag| %>
+		<%= link_to tag.name, tag_path(tag) %>
+	<% end %>
+</p>
+
 <p><%= @article.body %></p>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>
@@ -11,7 +19,7 @@
 	method: :delete,
 	data: {confirm: "Really delete the article?"} %>
 <%= link_to "edit", edit_article_path(@article) %>
-
+<%= link_to "List of All Tags", tags_path %>
 
 <!--Line 9 "fakes" an HTTP DELETE. Through some JavaScript tricks,
 Rails can now pretend that clicking this link triggers an HTTP DELETE request.

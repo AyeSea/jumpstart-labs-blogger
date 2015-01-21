@@ -1,3 +1,13 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 <%= link_to "<<Back to Articles List", articles_path %>
+<%= link_to "delete", article_path(@article),
+	method: :delete,
+	data: {confirm: "Really delete the article?"} %>
+<%= link_to "edit", edit_article_path(@article) %>
+
+
+<!--Line 5 "fakes" an HTTP DELETE. Through some JavaScript tricks,
+Rails can now pretend that clicking this link triggers an HTTP DELETE request.
+
+Line 6 causes a JavaScript dialog to popup and ask the user to confirm they want to delete the article.!-->

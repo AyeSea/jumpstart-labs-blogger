@@ -1,0 +1,22 @@
+<%= form_for(@article) do |f| %>
+<!--'Create a form for the object @article, refer to the form as 'f', and add the following form elements.'!-->
+	<ul>
+	<% @article.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+	<% end %>
+	</ul>
+
+	<p>
+		<%= f.label :title %><br/>
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :body %><br/>
+		<%= f.text_area :body %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

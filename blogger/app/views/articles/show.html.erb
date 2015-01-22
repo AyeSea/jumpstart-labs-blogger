@@ -10,7 +10,7 @@
 <p>
 	<% if @article.image.exists? %>
 		<%= image_tag @article.image.url %>
-	<% end %>s
+	<% end %>
 </p>
 
 <p><%= @article.body %></p>
@@ -21,10 +21,13 @@
 <%= render partial: 'comments/form' %>
 
 <%= link_to "<<Back to Articles List", articles_path %>
-<%= link_to "delete", article_path(@article),
-	method: :delete,
-	data: {confirm: "Really delete the article?"} %>
-<%= link_to "edit", edit_article_path(@article) %>
+
+<% if logged_in? %>
+	<%= link_to "delete", article_path(@article),
+		method: :delete,
+		data: {confirm: "Really delete the article?"} %>
+	<%= link_to "edit", edit_article_path(@article) %>
+<% end %>
 <%= link_to "List of All Tags", tags_path %>
 
 <!--Line 9 "fakes" an HTTP DELETE. Through some JavaScript tricks,

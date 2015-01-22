@@ -1,6 +1,8 @@
 #Just as we needed articles_controller.rb to manipulate our Article objects,
 #so we need a comments_controller.rb to manipulate our Comment objects.
 class CommentsController < ApplicationController
+	before_filter :require_login, except: [:create]
+
 	def create
 		@comment = Comment.new(comment_params)
 		@comment.article_id = params[:article_id]

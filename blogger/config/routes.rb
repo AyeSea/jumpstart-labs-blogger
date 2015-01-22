@@ -7,6 +7,11 @@ Blogger::Application.routes.draw do
     #specified comments as a subresource to articles. Unless we do this,
   end
   resources :tags
+  resources :authors
+  resources :author_sessions, only: [:new, :create, :destroy]
+
+  get 'login' => 'author_sessions#new'
+  get 'logout' => 'author_sessions#destroy'
   #Tells Rails that we have a resource named 'articles' and the router should expect
   #requests involving this resource to follow the RESTful model of web interaction
   #(Representational State Transfer). Ex. For a request like http://localhost:3000/articles,
